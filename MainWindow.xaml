@@ -1,0 +1,102 @@
+﻿<Window x:Class="FAIRSCMFEditor.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:FAIRSCMFEditor"
+        xmlns:localvm="clr-namespace:CMFFileEditor.ViewModel;assembly=CMFFileEditor.ViewModel"
+        xmlns:view="clr-namespace:FAIRSCMFEditor.View"
+        mc:Ignorable="d" WindowStyle="SingleBorderWindow" 
+        ResizeMode="CanResizeWithGrip" WindowStartupLocation="CenterScreen" MinHeight="480" MinWidth="795"
+        d:DesignHeight="600" d:DesignWidth="900" 
+        Icon="View/Images/transparent.ico" Name="mainWindow_" SizeChanged="mainWindow__SizeChanged">
+    <Window.Resources>
+        <DataTemplate DataType="{x:Type localvm:MainMenuViewModel}">
+            <view:MainMenu></view:MainMenu>
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type localvm:SettingsViewModel}">
+            <view:SettingsCMF></view:SettingsCMF>
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type localvm:SubmitByUserIdViewModel}">
+            <view:SubmitByUserID></view:SubmitByUserID>
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type localvm:DestinationORIViewModel}">
+            <view:DestinationORI></view:DestinationORI>
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type localvm:SourceLabViewModel}">
+            <view:SourceLab></view:SourceLab>
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type localvm:SpecimenCategoryViewModel}">
+            <view:SpecimenCategory></view:SpecimenCategory>
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type localvm:ReadingByUserViewModel}">
+            <view:ReadingByUser></view:ReadingByUser>
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type localvm:CMFFilesForRunIDViewModel}">
+            <view:CMFFilesForRunID></view:CMFFilesForRunID>
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type localvm:CMFXMLFilesViewModel}">
+            <view:CMFXmlFiles></view:CMFXmlFiles>
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type localvm:CMFXmlFileEditorViewModel}">
+            <view:CMFXmlFileEditor></view:CMFXmlFileEditor>
+        </DataTemplate>
+
+        <DataTemplate DataType="{x:Type localvm:CMFXmlFileEditorRevision16ViewModel}">
+            <view:CMFXmlFileEditorRevision16></view:CMFXmlFileEditorRevision16>
+        </DataTemplate>
+    </Window.Resources>
+    <Grid>
+        <Grid.Background>
+            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                <GradientStop Color="#E7E7E8" Offset="0"/>
+            </LinearGradientBrush>
+        </Grid.Background>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Border Grid.Row="0" VerticalAlignment="Top">
+            <Border.Background>
+                <LinearGradientBrush>
+                    <GradientStop Color="#000000" Offset="0"/>
+                </LinearGradientBrush>
+            </Border.Background>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="50" />
+                    <ColumnDefinition Width="240" />
+                </Grid.ColumnDefinitions>
+                <Viewbox Grid.Column="0"  VerticalAlignment="Top" HorizontalAlignment="Left">
+                    <Image Name="mastHead_"
+                       Source="View/Images/ANDE_Logo_HorizWhiteType_RGB.png" 
+                       Margin="0" />
+                </Viewbox>
+                <Viewbox Grid.Column="0" Grid.ColumnSpan="4" HorizontalAlignment="Center" VerticalAlignment="Center">
+                    <StackPanel>
+                    <Label Height="55" HorizontalAlignment="Center" Margin="90,0,137,-4" Name="titleaq_" 
+                        VerticalAlignment="Top" Width="511" Foreground="#FFFFFF" FontFamily="Segoe UI" 
+                        FontSize="16" HorizontalContentAlignment="Center"  VerticalContentAlignment="Center" >
+                            <TextBlock x:Name="Title" Text="{Binding Header}"></TextBlock>
+                       
+                    </Label>
+                        <Label HorizontalAlignment="Center" Margin="90,-60,137,-4" Name="subtitleaq_" Visibility="Visible"
+                        VerticalAlignment="Bottom" Width="511" Foreground="#FFFFFF" FontFamily="Segoe UI" 
+                        FontSize="10" HorizontalContentAlignment="Center"  VerticalContentAlignment="Center" >
+                            <TextBlock x:Name="SubTitle" Text="{Binding SubTitle}" ToolTipService.ToolTip="{Binding SubTitleTip}"></TextBlock>
+                        </Label>
+                    </StackPanel>
+                </Viewbox>
+                <Viewbox Grid.Column="3"  VerticalAlignment="Top" HorizontalAlignment="Right">
+
+                    <Image Name="FairsMastHead_" Height="56"  Grid.Column="3" 
+                   Source="View/Images/CMFEditor.png" 
+                   Margin="0,10,10,0"/>
+                </Viewbox>
+            </Grid>
+        </Border>
+        <ContentControl Content="{Binding CurrentView}" x:Name="contentViewer" Grid.Row="1" Margin="0"/>
+    </Grid>
+</Window>

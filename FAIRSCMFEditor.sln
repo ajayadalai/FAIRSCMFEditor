@@ -1,0 +1,53 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27428.2037
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FAIRSCMFEditor", "FAIRSCMFEditor.csproj", "{EC9C02A6-78A7-485F-9FE0-E4BBFF487B56}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CMFFileEditor.ViewModel", "..\ViewModel\CMFFileEditor.ViewModel\CMFFileEditor.ViewModel.csproj", "{3B6486C9-21F6-4A03-A011-1FEF1487154B}"
+EndProject
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "FAIRSCMFEditor.Installer", "..\FAIRSCMFEditor.Installer\FAIRSCMFEditor.Installer.vdproj", "{0D276326-A44A-41F6-A9E7-52C0C01BD6E6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FAIRSCMFEditor.Data", "FAIRSCMFEditor.Data\FAIRSCMFEditor.Data.csproj", "{D4BFF779-6D00-47CC-89D8-2ECF90AB7AE7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FAIRSCMFEditor.Domain", "FAIRSCMFEditor.Domain\FAIRSCMFEditor.Domain.csproj", "{9341668F-D86B-42FC-A548-980193323F94}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FAIRSCMFEditor.InstallerHelper", "..\FAIRSCMFEditor.InstallerHelper\FAIRSCMFEditor.InstallerHelper.csproj", "{A82BDB3B-3474-4FF6-B657-24289C0FC8FB}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{EC9C02A6-78A7-485F-9FE0-E4BBFF487B56}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EC9C02A6-78A7-485F-9FE0-E4BBFF487B56}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EC9C02A6-78A7-485F-9FE0-E4BBFF487B56}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EC9C02A6-78A7-485F-9FE0-E4BBFF487B56}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3B6486C9-21F6-4A03-A011-1FEF1487154B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3B6486C9-21F6-4A03-A011-1FEF1487154B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3B6486C9-21F6-4A03-A011-1FEF1487154B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3B6486C9-21F6-4A03-A011-1FEF1487154B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0D276326-A44A-41F6-A9E7-52C0C01BD6E6}.Debug|Any CPU.ActiveCfg = Debug
+		{0D276326-A44A-41F6-A9E7-52C0C01BD6E6}.Release|Any CPU.ActiveCfg = Release
+		{D4BFF779-6D00-47CC-89D8-2ECF90AB7AE7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D4BFF779-6D00-47CC-89D8-2ECF90AB7AE7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D4BFF779-6D00-47CC-89D8-2ECF90AB7AE7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D4BFF779-6D00-47CC-89D8-2ECF90AB7AE7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9341668F-D86B-42FC-A548-980193323F94}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9341668F-D86B-42FC-A548-980193323F94}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9341668F-D86B-42FC-A548-980193323F94}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9341668F-D86B-42FC-A548-980193323F94}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A82BDB3B-3474-4FF6-B657-24289C0FC8FB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A82BDB3B-3474-4FF6-B657-24289C0FC8FB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A82BDB3B-3474-4FF6-B657-24289C0FC8FB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A82BDB3B-3474-4FF6-B657-24289C0FC8FB}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {F2ADE9D8-1203-4634-8285-D7AF571F2BA2}
+	EndGlobalSection
+EndGlobal

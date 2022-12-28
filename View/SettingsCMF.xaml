@@ -1,0 +1,185 @@
+﻿<UserControl x:Class="FAIRSCMFEditor.View.SettingsCMF"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:FAIRSCMFEditor.View"
+             mc:Ignorable="d" 
+              d:DesignWidth="600" >
+    <Grid Name="gridSettings" VerticalAlignment="Top" Height="{Binding ViewHeight}">
+        <Grid.Background>
+            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                <GradientStop Color="#E7E7E8" Offset="0"/>
+            </LinearGradientBrush>
+        </Grid.Background>
+        <Grid.RowDefinitions>
+
+            <RowDefinition   Height="50"></RowDefinition>
+            <RowDefinition   Height="*"></RowDefinition>
+            <RowDefinition   Height="70"></RowDefinition>
+        </Grid.RowDefinitions>
+        <!--<Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+            <ColumnDefinition Width="120"></ColumnDefinition>
+        </Grid.ColumnDefinitions>-->
+
+
+
+        <!--<Line Grid.Row="1" Fill="#8246AF"  X2="1"></Line>-->
+
+        <!--<Line Grid.Row="1" Stroke="#8246AF" StrokeThickness="2" Stretch="Uniform" X1="0" X2="1" Y1="0" Y2="0"></Line>-->
+        <Viewbox Grid.Row="1" VerticalAlignment="Center" Grid.ColumnSpan="2" HorizontalAlignment="Center" StretchDirection="DownOnly" >
+            <Grid Name="gridVesion13"  Grid.ColumnSpan="2"  VerticalAlignment="Center"  HorizontalAlignment="Center" Grid.Row="1">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="150"></RowDefinition>
+                    <RowDefinition Height="150"></RowDefinition>
+                    <RowDefinition Height="150"></RowDefinition>
+                    <RowDefinition Height="60"></RowDefinition>
+
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="300"></ColumnDefinition>
+                    <ColumnDefinition Width="300"></ColumnDefinition>
+                    <ColumnDefinition Width="300"></ColumnDefinition>
+                    <ColumnDefinition Width="300"></ColumnDefinition>
+                    <!--<ColumnDefinition Width="300"></ColumnDefinition>-->
+                </Grid.ColumnDefinitions>
+
+                <Border x:Name="borderDestinationORI" Grid.Row="0" Grid.Column="1"  HorizontalAlignment="Center" VerticalAlignment="Center" Style="{StaticResource MainMenuRoundedCorner}" Margin="0,15" Height="80" Width="250">
+                    <Button FontFamily="Segoe UI" FontSize="20" Foreground="White"  HorizontalAlignment="Center" Height="80" Width="250" Command="{Binding DestinationORIConfigCommand}"
+                        x:Name="btnDestinationORI"  VerticalAlignment="Center" Style="{DynamicResource ButtonBlueChrome}" Content="Destination ORI">
+                    </Button>
+                </Border>
+                <Border x:Name="borderSourceLab" Grid.Row="0" Grid.Column="2"  HorizontalAlignment="Center" VerticalAlignment="Center" Style="{StaticResource MainMenuRoundedCorner}" Margin="0,15" Height="80" Width="250">
+                    <Button FontFamily="Segoe UI" FontSize="20" Foreground="White"  HorizontalAlignment="Center" Height="80" Width="250" Command="{Binding SourceLabConfigCommand}"
+                        x:Name="btnSourceLab"  VerticalAlignment="Center" Style="{DynamicResource ButtonBlueChrome}" Content="Source Lab">
+                    </Button>
+                </Border>
+
+                <Border x:Name="borderSubmitByUserID" Grid.Row="1" Grid.Column="1"  HorizontalAlignment="Center" VerticalAlignment="Center" Style="{StaticResource MainMenuRoundedCorner}" Margin="0,15" Height="80" Width="250">
+                    <Button FontFamily="Segoe UI" FontSize="20" Foreground="White"  HorizontalAlignment="Center" Height="80" Width="250" Command="{Binding SubmitByUserIdConfigCommand}"
+                        x:Name="btnSubmitByUserID"  VerticalAlignment="Center" Style="{DynamicResource ButtonBlueChrome}" Content="Submit By User ID">
+                    </Button>
+                </Border>
+
+                <Border x:Name="borderSpecimenCategory" Grid.Row="1" Grid.Column="2"  HorizontalAlignment="Center" VerticalAlignment="Center" Style="{StaticResource MainMenuRoundedCorner}" Margin="0,15" Height="80" Width="250">
+                    <Button FontFamily="Segoe UI" FontSize="20" Foreground="White"  HorizontalAlignment="Center" Height="80" Width="250" Command="{Binding SpecimenCategoryConfigCommand}"
+                        x:Name="btnSpecimenCategory"  VerticalAlignment="Center" Style="{DynamicResource ButtonBlueChrome}" Content="Specimen Category">
+                    </Button>
+                </Border>
+                <Border x:Name="borderReadingByUser" Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2"  HorizontalAlignment="Center" VerticalAlignment="Center" Style="{StaticResource MainMenuRoundedCorner}" Margin="0,15" Height="80" Width="250">
+                    <Button FontFamily="Segoe UI" FontSize="20" Foreground="White"  HorizontalAlignment="Center" Height="80" Width="250" Command="{Binding ReadingByUserConfigCommand}"
+                        x:Name="btnReadingByUser"  VerticalAlignment="Center" Style="{DynamicResource ButtonBlueChrome}" Content="Reading By User">
+                    </Button>
+                </Border>
+            </Grid>
+        </Viewbox>
+
+        <Viewbox Grid.Row="1" VerticalAlignment="Center" Grid.ColumnSpan="2" HorizontalAlignment="Center" StretchDirection="DownOnly" >
+            <Grid Name="gridVesion9" Visibility="Collapsed"  Grid.ColumnSpan="2" VerticalAlignment="Center"  HorizontalAlignment="Center" Grid.Row="1">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="150"></RowDefinition>
+                    <RowDefinition Height="150"></RowDefinition>
+                    <RowDefinition Height="150"></RowDefinition>
+                    <RowDefinition Height="60"></RowDefinition>
+
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="300"></ColumnDefinition>
+                    <ColumnDefinition Width="300"></ColumnDefinition>
+                    <ColumnDefinition Width="300"></ColumnDefinition>
+                    <ColumnDefinition Width="300"></ColumnDefinition>
+                    <!--<ColumnDefinition Width="300"></ColumnDefinition>-->
+                </Grid.ColumnDefinitions>
+
+                <Border x:Name="borderDestinationORI1" Grid.Row="0" Grid.Column="1"  HorizontalAlignment="Center" VerticalAlignment="Center" Style="{StaticResource MainMenuRoundedCorner}" Margin="0,15" Height="80" Width="250">
+                    <Button FontFamily="Segoe UI" FontSize="20" Foreground="White"  HorizontalAlignment="Center" Height="80" Width="250" Command="{Binding DestinationORIConfigCommand}"
+                        x:Name="btnDestinationORI1"  VerticalAlignment="Center" Style="{DynamicResource ButtonBlueChrome}" Content="Destination ORI">
+                    </Button>
+                </Border>
+                <Border x:Name="borderSourceLab1" Grid.Row="0" Grid.Column="2"  HorizontalAlignment="Center" VerticalAlignment="Center" Style="{StaticResource MainMenuRoundedCorner}" Margin="0,15" Height="80" Width="250">
+                    <Button FontFamily="Segoe UI" FontSize="20" Foreground="White"  HorizontalAlignment="Center" Height="80" Width="250" Command="{Binding SourceLabConfigCommand}"
+                        x:Name="btnSourceLab1"  VerticalAlignment="Center" Style="{DynamicResource ButtonBlueChrome}" Content="Source Lab">
+                    </Button>
+                </Border>
+
+                <!--<Border x:Name="borderSubmitByUserID1" Grid.Row="1" Grid.Column="1"  HorizontalAlignment="Center" VerticalAlignment="Center" Style="{StaticResource MainMenuRoundedCorner}" Margin="0,15" Height="80" Width="250">
+                    <Button FontFamily="Segoe UI" FontSize="20" Foreground="White"  HorizontalAlignment="Center" Height="80" Width="250" Command="{Binding SubmitByUserIdConfigCommand}"
+                        x:Name="btnSubmitByUserID1"  VerticalAlignment="Center" Style="{DynamicResource ButtonBlueChrome}" Content="Submit By User ID">
+                    </Button>
+                </Border>-->
+
+                <Border x:Name="borderSpecimenCategory1" Grid.Row="1" Grid.Column="1"  HorizontalAlignment="Center" VerticalAlignment="Center" Style="{StaticResource MainMenuRoundedCorner}" Margin="0,15" Height="80" Width="250">
+                    <Button FontFamily="Segoe UI" FontSize="20" Foreground="White"  HorizontalAlignment="Center" Height="80" Width="250" Command="{Binding SpecimenCategoryConfigCommand}"
+                        x:Name="btnSpecimenCategory1"  VerticalAlignment="Center" Style="{DynamicResource ButtonBlueChrome}" Content="Specimen Category">
+                    </Button>
+                </Border>
+                <Border x:Name="borderReadingByUser1" Grid.Row="1" Grid.Column="2"   HorizontalAlignment="Center" VerticalAlignment="Center" Style="{StaticResource MainMenuRoundedCorner}" Margin="0,15" Height="80" Width="250">
+                    <Button FontFamily="Segoe UI" FontSize="20" Foreground="White"  HorizontalAlignment="Center" Height="80" Width="250" Command="{Binding ReadingByUserConfigCommand}"
+                        x:Name="btnReadingByUser1"  VerticalAlignment="Center" Style="{DynamicResource ButtonBlueChrome}" Content="Reading By User">
+                    </Button>
+                </Border>
+            </Grid>
+        </Viewbox>
+
+        <Viewbox Grid.Row="1" VerticalAlignment="Center" Grid.ColumnSpan="2" HorizontalAlignment="Center" StretchDirection="DownOnly" >
+            <Grid Name="gridVesion16" Visibility="Collapsed"  Grid.ColumnSpan="2" VerticalAlignment="Center"  HorizontalAlignment="Center" Grid.Row="1">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="150"></RowDefinition>
+                    <RowDefinition Height="150"></RowDefinition>
+                    <!--<RowDefinition Height="150"></RowDefinition>
+                    <RowDefinition Height="60"></RowDefinition>-->
+
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="300"></ColumnDefinition>
+                    <ColumnDefinition Width="300"></ColumnDefinition>
+                    <ColumnDefinition Width="300"></ColumnDefinition>
+                    <ColumnDefinition Width="300"></ColumnDefinition>
+                    <!--<ColumnDefinition Width="300"></ColumnDefinition>-->
+                </Grid.ColumnDefinitions>
+
+                <Border x:Name="borderDestinationORI2" Grid.Row="0" Grid.Column="1"  HorizontalAlignment="Center" VerticalAlignment="Center" Style="{StaticResource MainMenuRoundedCorner}" Margin="0,15" Height="80" Width="250">
+                    <Button FontFamily="Segoe UI" FontSize="20" Foreground="White"  HorizontalAlignment="Center" Height="80" Width="250" Command="{Binding DestinationORIConfigCommand}"
+                        x:Name="btnDestinationORI2"  VerticalAlignment="Center" Style="{DynamicResource ButtonBlueChrome}" Content="Destination ORI">
+                    </Button>
+                </Border>
+                <Border x:Name="borderSourceORI2" Grid.Row="0" Grid.Column="2"  HorizontalAlignment="Center" VerticalAlignment="Center" Style="{StaticResource MainMenuRoundedCorner}" Margin="0,15" Height="80" Width="250">
+                    <Button FontFamily="Segoe UI" FontSize="20" Foreground="White"  HorizontalAlignment="Center" Height="80" Width="250" Command="{Binding SourceLabConfigCommand}"
+                        x:Name="btnSourceORI2"  VerticalAlignment="Center" Style="{DynamicResource ButtonBlueChrome}" Content="Source ORI">
+                    </Button>
+                </Border>
+
+
+                <Border x:Name="borderSpecimenCategory2" Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2"  HorizontalAlignment="Center" VerticalAlignment="Center" Style="{StaticResource MainMenuRoundedCorner}" Margin="0,15" Height="80" Width="250">
+                    <Button FontFamily="Segoe UI" FontSize="20" Foreground="White"  HorizontalAlignment="Center" Height="80" Width="250" Command="{Binding SpecimenCategoryConfigCommand}"
+                        x:Name="btnSpecimenCategory2"  VerticalAlignment="Center" Style="{DynamicResource ButtonBlueChrome}" Content="Specimen Category">
+                    </Button>
+                </Border>
+            </Grid>
+        </Viewbox>
+
+        <Border Name="ViewbuttonGrid" Grid.Column="0" Grid.Row="2">
+            <Grid x:Name="viewButtonGrid" Grid.Row="2" >
+                <Grid.Background>
+                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                        <GradientStop Color="#494747" Offset="0"/>
+                    </LinearGradientBrush>
+                </Grid.Background>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <Viewbox Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,10,0,10">
+                    <Border  Name="borderBtnBack" IsEnabled="True"
+                Style="{StaticResource RoundedCorner}">
+                        <Button     Name="back_"  Command="{Binding CancelCommand}"
+                VerticalAlignment="Center"                
+                Style="{DynamicResource ButtonBlueChrome}"
+                Content="Back">
+                        </Button>
+                    </Border>
+                </Viewbox>
+            </Grid>
+        </Border>
+    </Grid>
+</UserControl>

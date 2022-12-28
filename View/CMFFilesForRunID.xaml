@@ -1,0 +1,246 @@
+﻿<UserControl x:Class="FAIRSCMFEditor.View.CMFFilesForRunID"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:FAIRSCMFEditor.View"
+             xmlns:uc1 ="clr-namespace:FAIRSCMFEditor.View.Common"
+             mc:Ignorable="d" 
+             Loaded="PageLoaded"
+             d:DesignHeight="600" d:DesignWidth="900" SizeChanged="UserControl_SizeChanged">
+    <Grid Name="grdRunIds">
+        <Grid.Resources>
+            <local:LocalDateConverter x:Key="localDateConverter" x:Name="localConverter"></local:LocalDateConverter>
+            <Style TargetType="GridViewColumnHeader">
+                <Setter Property="Height" Value="35"></Setter>
+                <Setter Property="BorderThickness" Value="0"></Setter>
+                <Setter Property="BorderBrush" Value="Transparent"></Setter>
+                <Setter Property="Background" Value="White"></Setter>
+                <Setter Property="Foreground" Value="Black"></Setter>
+                <Setter Property="FontFamily" Value="Segoe UI"></Setter>
+                <Setter Property="FontSize" Value="14"></Setter>
+                <Setter Property="FontWeight" Value="Bold"></Setter>
+                <Setter Property="TextBlock.TextAlignment" Value="Center"></Setter>
+                <Setter Property="TextBlock.Padding" Value="10,0,10,0"></Setter>
+                <Setter Property="TextBlock.VerticalAlignment" Value="Center"></Setter>
+
+            </Style>
+        </Grid.Resources>
+        <Grid.Background>
+            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                <GradientStop Color="#E7E7E8" Offset="0"/>
+            </LinearGradientBrush>
+        </Grid.Background>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="200"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="70"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Border Grid.Row="0">
+            <Border.Background>
+                <LinearGradientBrush>
+                    <GradientStop Color="#8246AF" Offset="0"/>
+                </LinearGradientBrush>
+            </Border.Background>
+
+            <Viewbox MaxWidth="1000" HorizontalAlignment="Left" Margin="0,0,0,0">
+                <Grid Name="grdSearch" Width="600">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <!--<ColumnDefinition Width="19*"/>
+                        <ColumnDefinition Width="28*"/>
+                        <ColumnDefinition Width="223*"/>
+                        <ColumnDefinition Width="170*"/>-->
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="40"/>
+                        <RowDefinition Height="40"/>
+                        <RowDefinition Height="40"/>
+                        <RowDefinition Height="40"/>
+                        <RowDefinition Height="0"/>
+                    </Grid.RowDefinitions>
+
+                    <Label Grid.Column="0" Grid.Row="0" VerticalAlignment="Bottom" HorizontalAlignment="Left"
+						   Style="{StaticResource SubHeaderLabel}"
+						   Name="textBlock10" FontSize="16" FontWeight="Bold"
+						   Content="Display Runs By Date"  Padding="0"  />
+
+                    <uc1:DateRangeSelector Grid.Row="1" Grid.RowSpan="2" Grid.Column="0" DisplayTitle="True" TitleHeight="32" ControlHeight="55"  x:Name="dateRange_" ClipToBounds="True" HorizontalAlignment="Stretch" 
+                                                Background="Transparent" Grid.ColumnSpan="4"  Margin="9,0,0,8" VerticalAlignment="Center" ></uc1:DateRangeSelector>
+                    <StackPanel Orientation="Horizontal" Grid.Row="3"   Grid.ColumnSpan="3">
+                        <uc1:SearchBox Grid.Row="3"   Grid.ColumnSpan="3"  x:Name="searchKeywords_"
+									 Height="25" 
+									 HorizontalAlignment="Left" 
+									 VerticalAlignment="Center" 
+									 SearchInstructions="Search by ANDE Run ID and Instrument" Width="440" Margin="9,0,0,0" OnSearch="searchKeywords__OnSearch" OnClear="searchKeywords__OnClear" >
+                        </uc1:SearchBox>
+
+                        <Button Margin="10,0,0,0" Width="60" Height="26" Name="btnRefresh" ToolTip="Refresh" Click="btnRefresh_Click" Cursor="Hand">
+                            <Button.Template>
+                                <ControlTemplate>
+                                    <Image Source="/View/Images/refresh.png" ></Image>
+                                </ControlTemplate>
+                            </Button.Template>
+                        </Button>
+                    </StackPanel>
+
+                    <StackPanel Name="stkPanelCMFFileSearch" Orientation="Horizontal" Grid.Row="4"   Grid.ColumnSpan="3">
+                        <uc1:SearchBox Grid.Row="3"   Grid.ColumnSpan="3"  x:Name="searchKeywordsCMFFile_"
+									 Height="25" 
+									 HorizontalAlignment="Left" 
+									 VerticalAlignment="Center" 
+									 SearchInstructions="Search by all or part of a CMF Filename" Width="440" Margin="9,0,0,0" OnSearch="CMFFilesSearchKeywords__OnSearch" OnClear="CMFFilesSearchKeywords__OnClear" >
+                        </uc1:SearchBox>
+
+                        <!--<Button Margin="10,0,0,0" Width="60" Height="26" Name="btnRefresh" ToolTip="Refresh" Click="btnRefresh_Click" Cursor="Hand">
+                            <Button.Template>
+                                <ControlTemplate>
+                                    <Image Source="/View/Images/refresh.png" ></Image>
+                                </ControlTemplate>
+                            </Button.Template>
+                        </Button>-->
+                    </StackPanel>
+                </Grid>
+            </Viewbox>
+
+        </Border>
+
+        <!--<Viewbox  Grid.Row="1" Margin="0" VerticalAlignment="Top" >-->
+        
+        
+        
+        <ListView Grid.Column="0" Grid.Row="1"
+				  Background="#E7E7E8"  
+				  BorderBrush="#494747"
+				  BorderThickness="1" ScrollViewer.VerticalScrollBarVisibility="Auto"
+				  Height="Auto" Width="Auto" HorizontalAlignment="Stretch" Margin="0,0,0,35"  FontFamily="Segoe UI" FontSize="14"  VerticalAlignment="Stretch"
+				  Name="_runIdList" SelectionMode="Single"   IsEnabled="True" SelectionChanged="_runIdList_SelectionChanged" >
+            <ListView.Style>
+                <Style TargetType="{x:Type ListView}">
+                     <!--here we go--> 
+                    <Style.Resources>
+                        <SolidColorBrush x:Key="{x:Static SystemColors.HighlightBrushKey}" Color="#ddd7e2"/>
+                        <SolidColorBrush x:Key="{x:Static SystemColors.ControlBrushKey}" Color="#ffffff"/>
+                    </Style.Resources>
+                </Style>
+            </ListView.Style>
+            
+            <ListView.ItemContainerStyle>
+                <Style TargetType="{x:Type ListViewItem}">
+                    <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+                    <Setter Property="Height" Value="30" />
+                    <Style.Triggers>
+                        <Trigger Property="IsSelected" Value="True">
+                            <Setter Property="Background" Value="{x:Null}" />
+                            <Setter Property="BorderBrush" Value="{x:Null}" />
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </ListView.ItemContainerStyle>
+
+
+            <ListView.View>
+                <GridView AllowsColumnReorder="False" >
+                    <GridViewColumn Width="35">
+                        <GridViewColumnHeader>
+                            <Border Height="15" Width="15" BorderThickness="1" BorderBrush="#8246AF">
+                                <Rectangle Fill="#8246AF" Margin="2">
+
+                                </Rectangle>
+                            </Border>
+                        </GridViewColumnHeader>
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <CheckBox Margin="0,0" HorizontalAlignment="Center" VerticalAlignment="Center" IsChecked="{Binding RelativeSource={RelativeSource AncestorType={x:Type ListBoxItem}}, Path=IsSelected}" />
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                    <GridViewColumn Width="300">
+                        <GridViewColumn.Header>
+                            <GridViewColumnHeader Tag="SampleIDHdr">
+                                <TextBlock>
+								ANDE Run ID
+                                </TextBlock>
+                            </GridViewColumnHeader>
+                        </GridViewColumn.Header>
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock FontFamily="Segoe UI" FontSize="12" Foreground="#777777"  Text="{Binding  FileName}"  Width="Auto" TextBlock.TextAlignment="Center"  />
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                    <GridViewColumn Width="200">
+                        <GridViewColumn.Header>
+                            <GridViewColumnHeader Tag="DatabaseHdr">
+                                <TextBlock Padding="10,0,10,0" >
+								     Date
+                                </TextBlock>
+                            </GridViewColumnHeader>
+                        </GridViewColumn.Header>
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock FontFamily="Segoe UI" FontSize="12" Foreground="#777777"  Text="{Binding CreatedDate}"  Width="Auto" TextBlock.TextAlignment="Center"  />
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                    <GridViewColumn Width="315">
+                        <GridViewColumn.Header>
+                            <GridViewColumnHeader Tag="GenderHdr" >
+                                <TextBlock Padding="10,0,10,0">
+								Instrument #
+                                </TextBlock>
+                            </GridViewColumnHeader>
+                        </GridViewColumn.Header>
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock  Foreground="#777777" FontSize="12"  Text="{Binding InstrumentName}" Width="Auto" TextBlock.TextAlignment="Center"  />
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+
+                </GridView>
+            </ListView.View>
+        </ListView>
+
+        <!--</Viewbox>-->
+        <uc1:PagingElements Grid.Row="1"  VerticalAlignment="Bottom" x:Name="pagingCtrl_" HorizontalAlignment="Right" Margin="0,0,8,3" >
+        </uc1:PagingElements>
+        <Grid Grid.Row="2">
+            <Grid.Background>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="#494747" Offset="0"/>
+                </LinearGradientBrush>
+            </Grid.Background>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <Viewbox Grid.Column="0"  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="10,10,0,10">
+                <Border x:Name="borderSelectRunID"  IsEnabled="False"
+                Style="{StaticResource RoundedCorner}">
+                    <Button Name="btnSelectRunID"
+                VerticalAlignment="Center"  IsEnabled="False"              
+                Style="{DynamicResource ButtonBlueChrome}"
+                Content="Select Run ID" Click="btnSelectRunID_Click" >
+                    </Button>
+                </Border>
+            </Viewbox>
+
+            <Viewbox Grid.Column="1"  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="10,10,0,10">
+                <Border x:Name="borderCancel" 
+                Style="{StaticResource RoundedCorner}">
+                    <Button Name="btnCancel"
+                VerticalAlignment="Center"                
+                Style="{DynamicResource ButtonBlueChrome}"
+                Content="Back" Command="{Binding CancelCommand}" >
+                    </Button>
+                </Border>
+            </Viewbox>
+        </Grid>
+    </Grid>
+</UserControl>

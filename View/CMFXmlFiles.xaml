@@ -1,0 +1,188 @@
+﻿<UserControl x:Class="FAIRSCMFEditor.View.CMFXmlFiles"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:FAIRSCMFEditor.View"
+             xmlns:uc="clr-namespace:FAIRSCMFEditor.View.Common"
+             mc:Ignorable="d" 
+             d:DesignHeight="600" d:DesignWidth="900">
+    <Grid>
+        <Grid.Resources>
+            <local:LocalDateConverter x:Key="localDateConverter" x:Name="localConverter"></local:LocalDateConverter>
+            <Style TargetType="GridViewColumnHeader">
+                <Setter Property="Height" Value="35"></Setter>
+                <Setter Property="BorderThickness" Value="0"></Setter>
+                <Setter Property="BorderBrush" Value="Transparent"></Setter>
+                <Setter Property="Background" Value="White"></Setter>
+                <Setter Property="Foreground" Value="Black"></Setter>
+                <Setter Property="FontFamily" Value="Segoe UI"></Setter>
+                <Setter Property="FontSize" Value="14"></Setter>
+                <Setter Property="FontWeight" Value="Bold"></Setter>
+                <Setter Property="TextBlock.TextAlignment" Value="Center"></Setter>
+                <Setter Property="TextBlock.Padding" Value="10,0,10,0"></Setter>
+                <Setter Property="TextBlock.VerticalAlignment" Value="Center"></Setter>
+                <!--<Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="GridViewColumnHeader">
+                            <Grid>
+                                <Border Name="HeaderBorder" BorderThickness="1" BorderBrush="{TemplateBinding BorderBrush}"      
+                              Background="{TemplateBinding Background}" Padding="2,0,2,0">
+                                    -->
+                <!--<ContentPresenter Name="HeaderContent" TextElement.Foreground="Black" TextElement.FontSize="14"
+                                    TextElement.FontFamily="Segoe UI" Margin="0,0,0,1"
+                                    VerticalAlignment="{TemplateBinding
+                                    VerticalContentAlignment}"
+                                    HorizontalAlignment="{TemplateBinding
+                                    HorizontalContentAlignment}"
+                                    RecognizesAccessKey="True"
+                                    SnapsToDevicePixels=
+                                    "{TemplateBinding SnapsToDevicePixels}"/>-->
+                <!--
+                                </Border>
+                            </Grid>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>-->
+            </Style>
+        </Grid.Resources>
+        <Grid.Background>
+            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                <GradientStop Color="#E7E7E8" Offset="0"/>
+            </LinearGradientBrush>
+        </Grid.Background>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <!--<RowDefinition Height="140"></RowDefinition>-->
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="70"></RowDefinition>
+        </Grid.RowDefinitions>
+        <!--<Border Grid.Row="0">
+            <Border.Background>
+                <LinearGradientBrush>
+                    <GradientStop Color="#8246AF" Offset="0"/>
+                </LinearGradientBrush>
+            </Border.Background>
+
+            
+
+        </Border>-->
+        <Border Name="borderNoRecord" Width="600" Height="400" VerticalAlignment="Center" BorderBrush="Black" BorderThickness="0" Visibility="Collapsed" >
+            <TextBlock Text="There is no valid CMF file for this Run ID. Please select another Run ID." HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="18">
+                
+            </TextBlock>
+        </Border>
+        <!--<Viewbox  Grid.Row="1" Margin="0" VerticalAlignment="Top" >-->
+        <ListView Grid.Column="0" Grid.Row="0" 
+				  Background="#E7E7E8"  
+				  BorderBrush="#494747"
+				  BorderThickness="1" ScrollViewer.VerticalScrollBarVisibility="Auto"
+				  Height="Auto" Width="Auto" HorizontalAlignment="Stretch" Margin="0,0,0,35"  FontFamily="Segoe UI" FontSize="14"  VerticalAlignment="Stretch"
+				  Name="xmlFileList"    IsEnabled="True" SelectionChanged="xmlFileList_SelectionChanged"  >
+            <ListView.Style>
+                <Style TargetType="{x:Type ListView}">
+                    <!-- here we go -->
+                    <Style.Resources>
+                        <SolidColorBrush x:Key="{x:Static SystemColors.HighlightBrushKey}" Color="#ddd7e2"/>
+                        <SolidColorBrush x:Key="{x:Static SystemColors.ControlBrushKey}" Color="#ffffff"/>
+                    </Style.Resources>
+                </Style>
+            </ListView.Style>
+            <ListView.ItemContainerStyle>
+                <Style TargetType="{x:Type ListViewItem}">
+                    <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+                    <Setter Property="Height" Value="30" />
+                    <Style.Triggers>
+                        <Trigger Property="IsSelected" Value="True">
+                            <Setter Property="Background" Value="{x:Null}" />
+                            <Setter Property="BorderBrush" Value="{x:Null}" />
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </ListView.ItemContainerStyle>
+
+
+            <ListView.View>
+                <GridView AllowsColumnReorder="False" >
+                    <GridViewColumn Width="35">
+                        <GridViewColumnHeader>
+                            <Border Height="15" Width="15" BorderThickness="1" BorderBrush="#8246AF">
+                                <Rectangle Fill="#8246AF" Margin="2">
+
+                                </Rectangle>
+                            </Border>
+                        </GridViewColumnHeader>
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <CheckBox Margin="0,0" HorizontalAlignment="Center" VerticalAlignment="Center" IsChecked="{Binding RelativeSource={RelativeSource AncestorType={x:Type ListBoxItem}}, Path=IsSelected}" />
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                    <!--<GridViewColumn Width="300">-->
+                    <GridViewColumn Width="{Binding RelativeSource={RelativeSource TemplatedParent},Path=Width}">
+                        <GridViewColumn.Header>
+                            <GridViewColumnHeader Tag="SampleIDHdr">
+                                <TextBlock>
+								CMF File Name
+                                </TextBlock>
+                            </GridViewColumnHeader>
+                        </GridViewColumn.Header>
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock FontFamily="Segoe UI" FontSize="12" Foreground="#777777"  Text="{Binding}"  Width="Auto" TextBlock.TextAlignment="Left"  />
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+
+
+                </GridView>
+            </ListView.View>
+        </ListView>
+        <!--</Viewbox>-->
+        <!--<uc:PagingElements Grid.Row="1"  VerticalAlignment="Bottom" x:Name="pagingCtrl_" HorizontalAlignment="Right" Margin="0,0,8,3" PageChanged="pagingCtrl__PageChanged"></uc:PagingElements>-->
+        <Grid Grid.Row="2">
+            <Grid.Background>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="#494747" Offset="0"/>
+                </LinearGradientBrush>
+            </Grid.Background>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <!--<Viewbox Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,10,0,10">
+                <Border  Name="borderbtnExport" IsEnabled="True"
+                Style="{StaticResource RoundedCorner}">
+                    <Button     Name="export_"
+                VerticalAlignment="Center"                
+                Style="{DynamicResource ButtonBlueChrome}"
+                Content="Export" Command="{Binding ExportCommand}">
+                    </Button>
+                </Border>
+            </Viewbox>-->
+            <Viewbox Grid.Column="0"  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="10,10,0,10">
+                <Border x:Name="borderSelectCMFFile"  IsEnabled="False"
+                Style="{StaticResource RoundedCorner}">
+                    <Button Name="btnSelectCMFFile"
+                VerticalAlignment="Center"  IsEnabled="False"              
+                Style="{DynamicResource ButtonBlueChrome}"
+                Content="Select CMF File" Click="btnSelectCMFFile_Click" >
+                    </Button>
+                </Border>
+            </Viewbox>
+
+            <Viewbox Grid.Column="1"  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="10,10,0,10">
+                <Border x:Name="borderBack" 
+                Style="{StaticResource RoundedCorner}">
+                    <Button Name="btnBack"
+                VerticalAlignment="Center"                
+                Style="{DynamicResource ButtonBlueChrome}"
+                Content="Back" Command="{Binding CancelCommand}" >
+                    </Button>
+                </Border>
+            </Viewbox>
+        </Grid>
+    </Grid>
+</UserControl>
